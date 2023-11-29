@@ -1,0 +1,28 @@
+{
+  "name": "ynab-amazon-chrome-extension",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CMDadabo/ynab-amazon-chrome-extension.git"
+  },
+  "author": "Chris Dadabo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/CMDadabo/ynab-amazon-chrome-extension/issues"
+  },
+  "homepage": "https://github.com/CMDadabo/ynab-amazon-chrome-extension#readme",
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "puppeteer": "^21.4.0",
+    "ynab": "^2.0.0"
+  },
+  "type": "module",
+  "devDependencies": {
+    "eslint": "^8.52.0"
+  }
+}

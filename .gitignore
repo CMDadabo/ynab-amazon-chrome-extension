@@ -128,3 +128,11 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# settings, secrets, and local data
+*.env
+config.json
+transactions.json
+
+# VSCode stuff
+.history
