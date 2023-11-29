@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "YNAB Amazon Import",
+  "version": "0.1",
+  "description": "Imports Amazon orders into YNAB",
+  "content_scripts": [
+    {
+      "matches": ["https://app.ynab.com/*"],
+      "js": ["scripts/content-ynab.js"]
+    },
+    {
+      "matches": ["https://www.amazon.com/*"],
+      "js": ["scripts/content-amazon.js"]
+    }
+  ],
+  "background": {
+    "service_worker": "service-worker.js"
+  }
+}
