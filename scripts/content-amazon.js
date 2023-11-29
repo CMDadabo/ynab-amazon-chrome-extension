@@ -92,20 +92,32 @@ async function getTransactionsBetweenDates(startDate, endDate = new Date()) {
     await getNextTransactionPage();
   }
 
+  let fetchedTransactions = [];
+
   while (latestDate > startDate) {
     const txs = await getAllTransactions();
-    // fetchedTransactions = [...fetchedTransactions, ...txs];
+    fetchedTransactions = [...fetchedTransactions, ...txs];
 
     await getNextTransactionPage();
-    console.log("done waiting");
   }
 
-  // savedTransactions.update(
-  //   fetchedTransactions.reduce((acc, tx) => {
-  //     acc[tx.orderNumber] = tx;
-  //     return acc;
-  //   }, {})
-  // );
+  // Limit to desired time range
+  fetchedTransactions = fetchedTransactions.filter(
+    (tx) => tx.transactionDate > startDate && tx.transactionDate < endDate
+  );
+
+  const savedTransactions = await chrome.storage.local.get("transactions");
+
+  // Save to local storage
+  await chrome.storage.local.set({
+    transactions: {
+      ...savedTransactions,
+      ...fetchedTransactions.reduce((acc, tx) => {
+        acc[tx.orderNumber] = tx;
+        return acc;
+      }, {}),
+    },
+  });
 }
 
 getTransactionsBetweenDates(new Date("October 1, 2023"));

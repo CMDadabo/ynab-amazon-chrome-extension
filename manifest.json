@@ -1,6 +1,7 @@
 {
   "manifest_version": 3,
   "name": "YNAB Amazon Import",
+  "permissions": ["storage"],
   "version": "0.1",
   "description": "Imports Amazon orders into YNAB",
   "content_scripts": [
